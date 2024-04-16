@@ -13,18 +13,36 @@ function readFileContent(file) {
 
 const findLargestSum = (file) => {
   // 🦁 Utilise readFileContent pour lire le fichier et stocke-le dans une variable fileContent
-  // 🦁 Trouve les lutins en utilisant `.split("\n\n")`pour mac ou `.split("\r\n\r\n")` pour windows dans notre liste
-  // 🦁 Initialise une variable largestSum à 0
-  // 🦁 Pour chaque lutin (boucle for)
-  // 🦁   Trouve les calories en utilisant `.split("\n")`pour mac ou `.split("\r\n")` pour windows dans notre liste
-  // 🦁   Initialise une variable sum à 0
-  // 🦁   Pour chaque calorie (boucle for)
-  // 🦁     Ajoute la calorie à la variable sum
-  // 🦁   Si la variable sum est plus grande que la variable largestSum
-  // 🦁     Mets la variable sum dans la variable largestSum
-  // 🦁 Retourne la variable largestSum
+  const fileContent = readFileContent(file);
 
-  return 0;
+  // 🦁 Trouve les lutins en utilisant `.split("\n\n")`pour mac ou `.split("\r\n\r\n")` pour windows dans notre liste
+  const lutins = fileContent.split('\n\n');
+
+  // 🦁 Initialise une variable largestSum à 0
+  let largestSum = 0;
+  // 🦁 Pour chaque lutin (boucle for)
+  for (let i = 0; i < lutins.length; i++) {
+    // 🦁   Trouve les calories en utilisant `.split("\n")`pour mac ou `.split("\r\n")` pour windows dans notre liste
+    const calories = lutins[i].split('\n');
+    console.log(calories);
+
+    // 🦁   Initialise une variable sum à 0
+    let sum = 0;
+    // 🦁   Pour chaque calorie (boucle for)
+    for (let j = 0; j < calories.length; j++) {
+      // 🦁     Ajoute la calorie à la variable sum
+      sum += Number(calories[j]);
+    }
+    console.log(sum);
+
+    // 🦁   Si la variable sum est plus grande que la variable largestSum
+    if (sum > largestSum) {
+      // 🦁     Mets la variable sum dans la variable largestSum
+      largestSum = sum;
+    }
+  }
+  // 🦁 Retourne la variable largestSum
+  return largestSum;
 };
 
 export const part1 = (file) => {
